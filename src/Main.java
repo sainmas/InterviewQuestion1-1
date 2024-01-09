@@ -12,8 +12,12 @@ public class Main {
             System.out.println("i = " + i);
         }
 
-        boolean result = isUnique("always");
-        System.out.println(result);
+        String word = "always";
+        boolean result = isUnique(word);
+        System.out.println("Is " + word + " unique?: " + result);
+        word = "another";
+        result = isUnique(word);
+        System.out.println("Is " + word + " unique?: " + result);
     }
 
     /**
@@ -22,7 +26,17 @@ public class Main {
      * @return boolean
      */
     public static boolean isUnique (String word) {
-
-        return false;
+        if (word == null) {
+            return true;
+        }
+        int length = word.length();
+        for (int i = 0; i < word.length(); i++) {
+            for (int j = i+1; j < length; j++) {
+                if (word.charAt(i) == word.charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
